@@ -1,0 +1,3 @@
+-  name: redis setup
+   debug:
+     msg: redis setup
