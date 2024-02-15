@@ -15,11 +15,11 @@
 #rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>"${log_file}"
 #status_check $?
 
-- name: Setup erlang repo
-  ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh |  bash
+- name: Setup ErLang Repo
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
-- name: Setup Rabbitmq repo
-  ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+- name: Install RabbitMQ Repos
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
 - name: Install ErLang and RabbitMQ
   ansible.builtin.yum:
