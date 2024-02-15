@@ -1,5 +1,5 @@
 - name: configure mongodb
-  when: "schema_type" == "mongo"
+  when: schema_type == "mongo"
   block:
    - name: mongodb
      ansible.builtin.copy:
