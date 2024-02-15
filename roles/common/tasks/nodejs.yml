@@ -1,3 +1,24 @@
-- name: nodejs
-  debug:
-    msg: nodejs
+#schema_setup
+#systemd_setup
+
+- name: configure nodejs repo
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: Include task app_prereq_setup
+  ansible.builtin.import_tasks:
+    file: app_prereq_setup.yml
+
+- name: Install NodeJS Dependencies
+  community.general.npm:
+    path: /app
+
+- name: Include task schema_setup
+  ansible.builtin.import_tasks:
+    file: schema_setup.yml
+  when: schema_type is defined
+

@@ -1,0 +1,23 @@
+- name: configure mongodb
+  when: "schema_type" == "mongo"
+  block:
+   - name: mongodb
+     ansible.builtin.copy:
+       src: mongo.repo
+       dest: /etc/yum.repos.d/mongo.repo
+   - name: Install mongo client
+     ansible.builtin.yum:
+       name: mongodb-org-shell
+       state: installed
+   - name: Load Schema
+     ansible.builtin.shell: mongo --host mongodb-dev.shujathdevops.online </app/schema/{{component}}.js
+
+- name: configure Mysql
+  when: "schema_type" == "mysql"
+  block:
+    - name: Install mongo client
+      ansible.builtin.yum:
+        name: mysql
+        state: installed
+    - name: Load Schema
+      ansible.builtin.shell: mysql -h mysql-dev.shujathdevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
