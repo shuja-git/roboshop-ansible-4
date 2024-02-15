@@ -15,7 +15,7 @@
 - name: configure Mysql
   when: schema_type == "mysql"
   block:
-    - name: Install mongo client
+    - name: Install mysql client
       ansible.builtin.yum:
         name: mysql
         state: installed
