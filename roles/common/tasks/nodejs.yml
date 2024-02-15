@@ -22,3 +22,8 @@
     file: schema_setup.yml
   when: schema_type is defined
 
+- name: Include task systemd_setup
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
+
+
