@@ -24,8 +24,8 @@
 - name: Install RabbitMQ and Erlang repo
   ansible.builtin.yum:
     name:
-      -  rabbitmq-server
-      -  erlang
+      - rabbitmq-server
+      - erlang
     state: installed
 
 - name: Add the user Roboshop
