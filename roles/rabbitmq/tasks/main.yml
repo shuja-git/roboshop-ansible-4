@@ -32,6 +32,12 @@
   ansible.builtin.user:
     name: roboshop
 
+- name: Start rabbitmq
+  ansible.builtin.systemd_service:
+    state: started
+    enabled: true
+    name: rabbitmq-server
+
 - name: Configuration permission
   community.rabbitmq.rabbitmq_user:
     user: roboshop
@@ -42,8 +48,4 @@
     write_priv: .*
     state: present
 
-- name: Start rabbitmq
-  ansible.builtin.systemd_service:
-    state: started
-    enabled: true
-    name: rabbitmq-server
+
