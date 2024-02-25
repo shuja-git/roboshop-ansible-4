@@ -1,0 +1,22 @@
+- name: Install python36 gcc python3-devel
+  ansible.builtin.dnf:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Include task app_prereq_setup
+  ansible.builtin.import_tasks:
+    file: app_prereq_setup.yml
+
+- name: Install specified python requirements in indicated (virtualenv)
+  ansible.builtin.pip:
+    requirements: /requirements.txt
+    executable: pip3.6
+
+- name: Include task systemd
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
+
+

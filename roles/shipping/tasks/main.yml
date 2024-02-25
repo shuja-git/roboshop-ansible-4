@@ -1,3 +1,6 @@
--  name: shipping setup
-   debug:
-     msg: catalogue setup
+- name: Shipping
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: java
+
+

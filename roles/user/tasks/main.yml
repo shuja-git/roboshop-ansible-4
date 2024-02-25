@@ -1,3 +1,5 @@
--  name: user setup
-   debug:
-     msg: user setup
+- name: User
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs
+
