@@ -12,7 +12,7 @@
 
 - name: Install specified python requirements in indicated (virtualenv)
   ansible.builtin.pip:
-    requirements: /requirements.txt
+    requirements: /app/requirements.txt
     executable: pip3.6
 
 - name: Include task systemd
