@@ -1,1 +1,2 @@
-schema_type: "mysql"
+schema_type: mysql
+component: shipping
